@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- FONT FAMILLY -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=REM:wght@100;200;300;400;500;600;700;800;900&family=Sedgwick+Ave+Display&display=swap"
+      rel="stylesheet"
+    />
+    <!-- ICONS -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- ANIMATE CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <!-- STYLE -->
+    <style>
+      :root {
+        --primary-color: #a2a2fd;
+        --secondary-color: #e8e8e8;
+        --dark-color: #252525;
+        --hover-links-color: #c4d3e8;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        list-style: none;
+        font-family: "REM", sans-serif;
+        transition: all 0.3s;
+        letter-spacing: 2px;
+        color: var(--dark-color);
+        scroll-behavior: smooth;
+      }
+      *::selection {
+        background-color: var(--dark-color);
+        color: var(--secondary-color);
+      }
+      body {
+        background-color: var(--primary-color);
+        overflow-x: hidden;
+      }
+      /* ======================================================================== */
+      /* START NAV STYLE */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 60px;
+        background-color: var(--primary-color);
+        z-index: 999;
+        box-shadow: 5px 0 5px var(--dark-color);
+      }
+      header > img {
+        width: 50px;
+        filter: drop-shadow(16px 16px 20px var(--dark-color)) invert(100%);
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 80px;
+      }
+      ul {
+        display: flex;
+        gap: 20px;
+      }
+
+      h1 {
+        color: var(--dark-color);
+        font-size: 30px;
+      }
+
+      ul > li > a {
+        color: var(--secondary-color);
+        font-size: 18px;
+      }
+      ul > li > a:hover {
+        color: var(--hover-links-color);
+      }
+      .active {
+        color: var(--hover-links-color);
+      }
+
+      button {
+        color: var(--secondary-color);
+        padding: 8px 16px;
+        background: none;
+        border: 2px solid var(--secondary-color);
+        border-radius: 15px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+        padding: 8px 16px;
+        border: 2px solid var(--secondary-color);
+        border-radius: 15px;
+        cursor: pointer;
+      }
+      .tog,
+      p > .bx-x {
+        color: var(--secondary-color);
+        display: none;
+        cursor: pointer;
+      }
+      /* END NAV STYLE */
+      /* ======================================================================== */
+      /* START MAIN STYLE */
+      main {
+        position: relative;
+        margin-top: 90px;
+        width: 100%;
+        min-height: calc(100vh - 90px);
+        display: flex;
+        padding: 0 60px;
+        background: var(--primary-color);
+      }
+      main > div {
+        max-width: 50%;
+        min-height: calc(100vh - 90px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+      }
+      main > div > h4 {
+        font-weight: 300;
+      }
+      main > div > h2 {
+        font-size: 25px;
+        color: var(--secondary-color);
+        font-weight: bold;
+      }
+      main > div > h2 > span {
+        position: relative;
+        font-size: 35px;
+      }
+      main > div > h2 > span::before {
+        position: absolute;
+        content: "";
+        height: 100%;
+        top: 0;
+        right: 0;
+        background-color: var(--primary-color);
+        animation: sapn-anim 5s ease-in-out infinite;
+      }
+      main > div > p {
+        line-height: 25px;
+        font-weight: 400;
+      }
+      main > div > button {
+        align-self: start;
+      }
+      .main-txt > img {
+        display: none;
+      }
+      .main-img {
+        align-items: center;
+      }
+      .main-img > img {
+        width: 95%;
+      }
+      .main-txt {
+        animation: left-anim;
+      }
+      .social-icon {
+        width: 30%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .social-icon > a > i {
+        font-size: 23px;
+        color: var(--secondary-color);
+      }
+      .social-icon > a > i:hover {
+        transform: scale(1.5);
+        border-bottom: 3px solid var(--secondary-color);
+        text-shadow: 0 0 8px var(--secondary-color);
+      }
+
+      /* END MAIN STYLE */
+
+      /* ======================================================================== */
+
+      /* START SECTION */
+      section {
+        max-width: 100%;
+        min-height: 100vh;
+        padding: 100px 60px;
+        overflow-x: hidden;
+        text-align: center;
+      }
+      /* END SECTION */
+
+      /* ======================================================================== */
+
+      /* START SEC-1 */
+      .title-sev,
+      .title-skil,
+      .title-cno {
+        text-align: center;
+        border-bottom: 2px solid var(--dark-color);
+        margin-bottom: 20px;
+        padding: 20px 0;
+      }
+      .serv-box {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        padding: 30px 0;
+        gap: 50px;
+      }
+      .serv-box > div {
+        box-shadow: 5px 5px 2px var(--dark-color);
+        background-color: var(--hover-links-color);
+        border-radius: 10px;
+        text-align: center;
+        padding: 35px;
+        line-height: 25px;
+      }
+      .bxs-credit-card-front,
+      .bx-data,
+      .bxl-graphql,
+      .bx-devices {
+        color: var(--primary-color);
+        font-size: 50px;
+      }
+      .serv-box > div > h4 {
+        color: var(--dark-color);
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+      .serv-box > div > p {
+        color: var(--dark-color);
+        font-size: 15px;
+      }
+      /* END SRC-1 */
+
+      /* ======================================================================== */
+
+      /* START SEC-2 */
+      .box-skills {
+        position: relative;
+        height: 565px;
+      }
+      .ani-1 {
+        position: absolute;
+        opacity: 0.4;
+        top: 0;
+        left: 0;
+      }
+
+      .one {
+        position: absolute;
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto;
+        gap: 8px;
+      }
+      .tow {
+        position: absolute;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        gap: 8px;
+      }
+      .ani-2 {
+        position: absolute;
+        opacity: 0.4;
+        bottom: 200px;
+        right: 220px;
+      }
+      .ani-2 > .one {
+        margin-top: 110px;
+      }
+      .ani-2 > .tow {
+        margin-left: 140px;
+        margin-top: 25px;
+      }
+      .one > span,
+      .tow > span {
+        width: 20px;
+        height: 20px;
+        background-color: var(--secondary-color);
+        border-radius: 50%;
+      }
+
+      .skills {
+        display: grid;
+        grid-template-columns: auto auto;
+        height: 565px;
+        align-items: center;
+        gap: 30px;
+      }
+      .skills > div {
+        background-color: var(--dark-color);
+        border-radius: 50px;
+        padding: 10px 0;
+      }
+      .skills:hover > :not(:hover) {
+        opacity: 0.5;
+      }
+      .bxl-css3,
+      .bxl-html5,
+      .bxl-javascript,
+      .bxl-php,
+      .bxl-python,
+      .bxl-react,
+      .bxl-mongodb,
+      .bxl-bootstrap,
+      .bxl-tailwind-css {
+        font-size: 60px;
+        color: var(--secondary-color);
+      }
+      /* END SRC-2 */
+
+      /* ======================================================================== */
+
+      /* START SRC-3 */
+      .box-cont {
+        height: 565px;
+        display: flex;
+      }
+      .cont-img,
+      .cont-form {
+        width: 50%;
+      }
+      .cont-img {
+        position: relative;
+      }
+      .cont-img > img {
+        position: absolute;
+        width: 85%;
+        left: 0;
+      }
+      .cont-form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .bg-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 30px 10px;
+        gap: 15px;
+      }
+      .bg-form > div {
+        width: 100%;
+      }
+      label {
+        display: flex;
+        justify-self: left;
+        color: var(--secondary-color);
+      }
+      input,
+      textarea {
+        width: 100%;
+        margin-top: 10px;
+        outline: none;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid var(--secondary-color);
+        border-radius: 4px;
+        background-color: var(--hover-links-color);
+        font-size: 16px;
+        font-weight: bold;
+        resize: none;
+        color: var(--dark-color);
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+      }
+      input {
+        height: 50px;
+      }
+      textarea {
+        height: 150px;
+      }
+      /* END SRC-3 */
+
+      /* ======================================================================== */
+
+      /* START FOOTER */
+      footer {
+        width: 100%;
+        padding: 20px 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      footer > p {
+        color: var(--dark-color);
+      }
+      footer > .social-icon {
+        width: auto;
+        gap: 15px;
+      }
+      /* END FOOTER */
+
+      /* ======================================================================== */
+
+      /* START KEYFRAMES */
+      @keyframes sapn-anim {
+        25% {
+          width: 0;
+        }
+        50% {
+          width: 100%;
+        }
+        75% {
+          width: 0;
+        }
+      }
+      /* END KEYFRAMES */
+      /* ======================================================================== */
+      /* START MEDIA QUERY */
+      @media (max-width: 835px) {
+        .tog,
+        p > .bx-x {
+          display: block;
+          font-size: 2.5em;
+        }
+        p > .bx-x {
+          position: absolute;
+          top: 20px;
+          right: 25px;
+        }
+        header {
+          padding: 20px 25px;
+        }
+        nav {
+          position: absolute;
+          width: 100%;
+          height: 100vh;
+          top: 0;
+          left: -100%;
+          background-color: var(--primary-color);
+          z-index: 999;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        ul {
+          flex-direction: column;
+          align-items: center;
+        }
+        main {
+          padding: 0 25px;
+          display: flex;
+          flex-direction: column;
+          max-height: 100vh;
+          overflow: hidden;
+        }
+        main > div {
+          max-width: 100%;
+          padding: 30px 0;
+        }
+        main > div > h2 {
+          font-size: 20px;
+        }
+        main > div > h2 > span {
+          font-size: 30px;
+        }
+        main > div > p {
+          font-size: 15px;
+        }
+        .main-txt > img {
+          display: block;
+          width: 85%;
+          align-self: end;
+        }
+        .main-img {
+          display: none;
+        }
+      }
+      @media (max-width: 700px) {
+        .tog,
+        p > .bx-x {
+          display: block;
+          font-size: 2.5em;
+        }
+        p > .bx-x {
+          position: absolute;
+          top: 20px;
+          right: 25px;
+        }
+        header {
+          padding: 20px 25px;
+        }
+        nav {
+          position: absolute;
+          width: 100%;
+          height: 100vh;
+          top: 0;
+          left: -100%;
+          background-color: var(--primary-color);
+          z-index: 999;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        ul {
+          flex-direction: column;
+          align-items: center;
+        }
+        main {
+          padding: 0 25px;
+          display: flex;
+          flex-direction: column;
+          max-height: 100vh;
+          overflow: hidden;
+        }
+        main > div {
+          max-width: 100%;
+          padding: 30px 0;
+        }
+        main > div > h2 {
+          font-size: 20px;
+        }
+        main > div > h2 > span {
+          font-size: 30px;
+        }
+        main > div > p {
+          font-size: 15px;
+        }
+        .main-txt > img {
+          display: block;
+          width: 85%;
+          align-self: end;
+        }
+        .main-img {
+          display: none;
+        }
+        .serv-box {
+          grid-template-columns: 1fr 1fr;
+          padding: 20px 0;
+          gap: 20px;
+        }
+        .ani-2 {
+          bottom: 0;
+          right: 220px;
+        }
+
+        .serv-box > div {
+          padding: 10px 5px;
+          line-height: 20px;
+        }
+        .bxs-credit-card-front,
+        .bx-data,
+        .bxl-graphql,
+        .bx-devices {
+          color: var(--primary-color);
+          font-size: 35px;
+        }
+        .serv-box > div > h4 {
+          color: var(--dark-color);
+          font-size: 15px;
+          margin-bottom: 8px;
+        }
+        .serv-box > div > p {
+          color: var(--dark-color);
+          font-size: 10px;
+        }
+        .skills {
+          grid-template-columns: auto;
+          min-height: 100vh;
+          gap: 20px;
+        }
+
+        .box-cont {
+          flex-direction: column;
+        }
+        .cont-img,
+        .cont-form {
+          width: 100%;
+        }
+        .cont-img > img {
+          position: static;
+        }
+        footer > p {
+          font-size: 8px;
+        }
+        footer > .social-icon {
+          width: auto;
+          gap: 5px;
+        }
+      }
+
+      /* END MEDIA QUERY */
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="logo.png" alt="" />
+      <nav>
+        <ul>
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#servecis">Servecis</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button>Download CV</button>
+        <p><i class="bx bx-x"></i></p>
+      </nav>
+      <p class="tog"><i class="bx bx-menu"></i></p>
+    </header>
+    <main>
+      <div class="main-txt animate__animated animate__backInLeft">
+        <h4>Hello guys...</h4>
+        <h2>
+          I'm Laabibi Abdellah<br />
+          <span>Full Stack Development</span>
+        </h2>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, hic.
+          Exercitationem asperiores dolore ullam eum, amet quas corporis
+          expedita voluptates voluptatem eaque excepturi maxime soluta molestias
+          voluptas veniam reprehenderit tempora?
+        </p>
+        <button>Download CV</button>
+        <div class="social-icon">
+          <a href="#"><i class="bx bxl-facebook-circle"></i></a>
+          <a href="#"><i class="bx bxl-instagram-alt"></i></a>
+          <a href="#"><i class="bx bxl-twitter"></i></a>
+          <a href="#"><i class="bx bxl-youtube"></i></a>
+        </div>
+      </div>
+      <div class="main-img animate__animated animate__backInDown">
+        <img src="pngwing.com (1).png" alt="" />
+      </div>
+    </main>
+    <section id="servecis" class="sec-1">
+      <h2 class="title-sev">Services</h2>
+      <div class="serv-box">
+        <div>
+          <p><i class="bx bxs-credit-card-front"></i></p>
+          <h4>Front end</h4>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro eius
+            praesentium libero sint.
+          </p>
+        </div>
+        <div>
+          <p><i class="bx bx-data"></i></p>
+          <h4>Back end</h4>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro eius
+            praesentium libero sint.
+          </p>
+        </div>
+        <div>
+          <p><i class="bx bxl-graphql"></i></p>
+          <h4>Designer UX / UI</h4>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro eius
+            praesentium libero sint.
+          </p>
+        </div>
+        <div>
+          <p><i class="bx bx-devices"></i></p>
+          <h4>Responsive Design</h4>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro eius
+            praesentium libero sint.
+          </p>
+        </div>
+        <div>
+          <p><i class="bx bxl-graphql"></i></p>
+          <h4>Designer UX / UI</h4>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro eius
+            praesentium libero sint.
+          </p>
+        </div>
+        <div>
+          <p><i class="bx bxl-graphql"></i></p>
+          <h4>Designer UX / UI</h4>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro eius
+            praesentium libero sint.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="skills" class="sec-2">
+      <h2 class="title-skil">Skills</h2>
+      <div class="box-skills">
+        <div class="ani-2">
+          <div class="one">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="tow">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="ani-1">
+          <div class="one">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="tow">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="skills">
+          <div><i class="bx bxl-html5 bx-burst bx-flip-horizontal"></i></div>
+          <div><i class="bx bxl-css3 bx-tada bx-flip-horizontal"></i></div>
+          <div>
+            <i class="bx bxl-javascript bx-tada bx-flip-horizontal"></i>
+          </div>
+          <div><i class="bx bxl-php bx-burst bx-flip-horizontal"></i></div>
+          <div><i class="bx bxl-python bx-burst bx-flip-horizontal"></i></div>
+          <div><i class="bx bxl-react bx-tada bx-flip-horizontal"></i></div>
+          <div><i class="bx bxl-mongodb bx-tada bx-flip-horizontal"></i></div>
+          <div>
+            <i class="bx bxl-bootstrap bx-burst bx-flip-horizontal"></i>
+          </div>
+          <div>
+            <i class="bx bxl-tailwind-css bx-burst bx-flip-horizontal"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="sec-3">
+      <h2 class="title-cno">Contact</h2>
+      <div class="box-cont">
+        <div class="cont-img">
+          <img src="Get in touch-cuate.png" alt="" />
+        </div>
+        <div class="cont-form">
+          <div class="bg-form">
+            <div>
+              <label for="name">Name:</label>
+              <input type="text" placeholder="Entrer ur name..." />
+            </div>
+            <div>
+              <label for="mail">E-mail:</label>
+              <input type="mail" placeholder="Entrer ur E-mail..." />
+            </div>
+            <div>
+              <label for="name">Ur name:</label>
+              <textarea placeholder="Write your message here"></textarea>
+            </div>
+            <button>Send</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <p>&copy; 2023 My Website. All rights reserved.</p>
+      <div class="social-icon">
+        <a href="#"><i class="bx bxl-facebook-circle"></i></a>
+        <a href="#"><i class="bx bxl-instagram-alt"></i></a>
+        <a href="#"><i class="bx bxl-twitter"></i></a>
+        <a href="#"><i class="bx bxl-youtube"></i></a>
+      </div>
+    </footer>
+    <script>
+      let tog = document.querySelector(".tog"),
+        nav = document.querySelector("nav"),
+        clsTog = document.querySelector(".bx-x"),
+        linkBar = document.querySelectorAll("ul>li>a");
+
+      tog.onclick = () => {
+        nav.style.left = "0";
+      };
+      clsTog.onclick = () => {
+        nav.style.left = "-100%";
+      };
+
+      linkBar.forEach((link) => {
+        link.addEventListener("click", () => {
+          linkBar.forEach((removeLink) =>
+            removeLink.classList.remove("active")
+          );
+          link.classList.add("active");
+          nav.style.left = "-100%";
+        });
+      });
+    </script>
+  </body>
+</html>
